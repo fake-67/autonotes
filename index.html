@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоконспект</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Библиотеки -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mammoth@1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Автоконспект</h1>
+            <p>Загрузи лекцию (PDF, DOCX, TXT) — получи выжимку с картинками</p>
+        </header>
+
+        <main>
+            <!-- Секция загрузки -->
+            <section id="upload-section">
+                <div id="drop-zone">
+                    <div class="icon">📂</div>
+                    <p>Перетащи файл сюда или нажми, чтобы выбрать</p>
+                    <p class="hint">Поддерживаются PDF, DOCX, PPTX, TXT</p>
+                    <input type="file" id="file-input" accept=".pdf,.docx,.pptx,.txt" hidden>
+                </div>
+                <div id="file-info" class="hidden">
+                    <span id="file-name"></span>
+                    <button id="clear-file">✕</button>
+                </div>
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Обрабатываю лекцию...</p>
+                </div>
+            </section>
+
+            <!-- Секция управления сжатием -->
+            <section id="controls-section" class="hidden">
+                <label for="compression-slider">Степень сжатия:</label>
+                <div class="range-labels">
+                    <span>Кратко (шпора)</span>
+                    <span>Подробно (основное)</span>
+                </div>
+                <input type="range" id="compression-slider" min="1" max="5" value="3">
+                <button id="generate-btn">Сгенерировать конспект</button>
+            </section>
+
+            <!-- Секция результата -->
+            <section id="result-section" class="hidden">
+                <div class="actions">
+                    <button id="copy-text-btn">📋 Скопировать текст</button>
+                    <button id="export-pdf-btn">📄 Сохранить как PDF</button>
+                    <button id="theme-toggle-btn">🌓 Тема</button>
+                </div>
+                <div id="notes-output">
+                    <!-- Здесь будет собранный конспект -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
